@@ -37,10 +37,10 @@ ParsedINIFile INIParser::Parse(const char **filePath)
         }
         else if (std::regex_match(buffer, parKeyRegExp))
         {
-            for (size_t i = 0; i < buffer.size(); i++)
-                if (isspace(buffer[i]))
-                    buffer.erase(buffer.begin() + i);
-                else if (buffer[i] == ';')
+            for (auto it = buffer.begin(); it != buffer.end(); it++)
+                if (isspace(*it))
+                    it = buffer.erase(it) - 1;
+                else if (*it == ';')
                     break;
 
             auto equals = std::find(buffer.begin(), buffer.end(), '=');
