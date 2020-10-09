@@ -34,6 +34,15 @@ public:
     ~ParseError() { delete[] msg_; }
 };
 
+class DoubleSectionException : public ParseError
+{
+public:
+    DoubleSectionException(const char *msg) : ParseError(msg) {}
+
+    const char *what() const noexcept override { return "Parse error. Two or more the same sections "
+                                                        "in one file: "; }
+};
+
 /*class MyException : public std::exception
 {
     const char *msg_;
