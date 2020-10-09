@@ -7,7 +7,7 @@ int main(int argc, const char **argv)
 {
     if (argc != 2)
     {
-        std::cerr << "Usage: ./INIParser /home/rikine/Documents/FILE.ini" << '\n';
+        std::cerr << "File isn't found. Usage: ./INIParser /home/rikine/Documents/FILE.ini" << '\n';
         return 1;
     }
 
@@ -16,6 +16,11 @@ int main(int argc, const char **argv)
     try
     {
         iniFile = INIParser().Parse(argv);
+    }
+    catch (const ParseError &e)
+    {
+        std::cerr << e.what() << e.moreInfo() << '\n';
+        return 2;
     }
     catch (const std::exception &e)
     {
@@ -68,7 +73,7 @@ int main(int argc, const char **argv)
             return 3;
         }
     }
-    catch (const GettingParamError &e)
+    catch (const GetParamError &e)
     {
         std::cerr << '\n'
                   << e.what() << '\n';
