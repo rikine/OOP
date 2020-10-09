@@ -21,7 +21,7 @@ std::string ParsedINIFile::GetString(const std::string &section, const std::stri
 void ParsedINIFile::CheckingExisence(const std::string &section, const std::string &key)
 {
     if (data.find(section) == data.end())
-        throw GettingParamError("No such section in this file: ", section.c_str());
+        throw GetParamError();
     if (data[section].find(key) == data[section].end())
-        throw GettingParamError("No such key in this section: ", key.c_str());
+        throw GetParamError();
 }
