@@ -7,15 +7,15 @@ ParsedINIFile INIParser::Parse(const char **filePath)
     std::ifstream input(filePath[1], std::ios_base::binary);
 
     if (!input.is_open())
-        throw MyException("File isn't open. Example: ./INIParser /home/rikine/Documents/FILE.ini");
+        throw InputFileError();
 
     std::string section; //data
     std::map<std::string, std::string> keys;
     std::string par;
 
-    std::regex sectionRegExp("^\\s*\\[[a-zA-Z0-9_]+\\]\\s*");
-    std::regex parKeyRegExp("^\\s*[a-zA-Z0-9_]+\\s*=\\s*[a-zA-Z0-9/\\.]+\\s*(;.*)?");
-    std::regex commentRegExp("^;.*");
+    std::regex sectionRegExp("\\s*\\[[a-zA-Z0-9_]+\\]\\s*");
+    std::regex parKeyRegExp("\\s*[a-zA-Z0-9_]+\\s*=\\s*[a-zA-Z0-9/\\.]+\\s*(;.*)?");
+    std::regex commentRegExp("\\s*;.*");
     std::regex whiteSpaceString("\\s*");
 
     std::string buffer;
@@ -37,6 +37,9 @@ ParsedINIFile INIParser::Parse(const char **filePath)
         }
         else if (std::regex_match(buffer, parKeyRegExp))
         {
+            if (section == "")
+                throw ParseError(buffer.c_str());
+
             for (auto it = buffer.begin(); it != buffer.end(); it++)
                 if (isspace(*it))
                     it = buffer.erase(it) - 1;
@@ -47,7 +50,7 @@ ParsedINIFile INIParser::Parse(const char **filePath)
             par = buffer.substr(0UL, std::distance(buffer.begin(), equals));
 
             if (keys.find(par) != keys.end())
-                throw MyException("Same keys in one section: ", section.c_str(), "\nKeys: ", par.c_str());
+                throw ParseError(par.c_str());
 
             auto comm = std::find(buffer.begin(), buffer.end(), ';');
             keys[par] = buffer.substr(std::distance(buffer.begin(), equals + 1),
@@ -59,7 +62,7 @@ ParsedINIFile INIParser::Parse(const char **filePath)
         }
         else
         {
-            throw MyException("Invalid file. Something with: ", buffer.c_str());
+            throw ParseError(buffer.c_str());
         }
     }
 
