@@ -50,8 +50,6 @@ namespace Shops.Details
             var totalPrice = qty * shipment.price;
             shipment.qty -= qty;
 
-            //del?
-
             return totalPrice;
         }
 
