@@ -90,6 +90,6 @@ namespace Shops.Details
                 result += $"{prod.product.id.ToString()}\t{prod.product.name}\t{prod.qty}\t{prod.price}\n";
             }
             return result;
-        }
+        } 
     }
 }
