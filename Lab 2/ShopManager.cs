@@ -63,7 +63,7 @@ namespace Shops
             }
 
             if (cheapShop == null)
-                throw new CheapestShopException($"No product {product} in all shops");
+                throw new CheapestShopException($"No product: {product} in all shops");
             return cheapShop;
         }
 
