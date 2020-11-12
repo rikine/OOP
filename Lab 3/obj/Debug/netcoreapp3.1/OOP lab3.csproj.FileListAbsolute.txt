@@ -1,0 +1,12 @@
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/bin/Debug/netcoreapp3.1/OOP lab3.deps.json
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/bin/Debug/netcoreapp3.1/OOP lab3.runtimeconfig.json
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/bin/Debug/netcoreapp3.1/OOP lab3.runtimeconfig.dev.json
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/bin/Debug/netcoreapp3.1/OOP lab3.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/bin/Debug/netcoreapp3.1/OOP lab3.pdb
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/obj/Debug/netcoreapp3.1/OOP lab3.csprojAssemblyReference.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/obj/Debug/netcoreapp3.1/OOP lab3.AssemblyInfoInputs.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/obj/Debug/netcoreapp3.1/OOP lab3.AssemblyInfo.cs
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/obj/Debug/netcoreapp3.1/OOP lab3.csproj.CoreCompileInputs.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/obj/Debug/netcoreapp3.1/OOP lab3.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/obj/Debug/netcoreapp3.1/OOP lab3.pdb
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab3/obj/Debug/netcoreapp3.1/OOP lab3.genruntimeconfig.cache
