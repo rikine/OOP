@@ -1,0 +1,15 @@
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/bin/Debug/net5.0/Project.deps.json
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/bin/Debug/net5.0/Project.runtimeconfig.json
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/bin/Debug/net5.0/Project.runtimeconfig.dev.json
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/bin/Debug/net5.0/Project.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/bin/Debug/net5.0/ref/Project.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/bin/Debug/net5.0/Project.pdb
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/Project.csprojAssemblyReference.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/Project.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/Project.AssemblyInfoInputs.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/Project.AssemblyInfo.cs
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/Project.csproj.CoreCompileInputs.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/Project.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/ref/Project.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/Project.pdb
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab4/Project/obj/Debug/net5.0/Project.genruntimeconfig.cache
