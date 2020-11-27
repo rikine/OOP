@@ -42,20 +42,29 @@ public class GibridClearAlgo : IAlgorithmClear
     {
         if (AllParamsMustBeOverLimited)
         {
+            bool ok = true;
             if (Count.HasValue)
             {
                 while (restorePoints.Count > Count)
                 {
-                    if (DateTime.HasValue == false && Size.HasValue == false)
-                        restorePoints.RemoveAt(0);
-                    else if (DateTime.HasValue == true && restorePoints[0].DateTime < DateTime && Size.HasValue == false)
-                        restorePoints.RemoveAt(0);
-                    else if (DateTime.HasValue == false && Size.HasValue == true && restorePoints.Sum(file => file.Size) > Size)
-                        restorePoints.RemoveAt(0);
-                    else if (DateTime.HasValue == true && restorePoints[0].DateTime < DateTime && Size.HasValue == true && restorePoints.Sum(file => file.Size) > Size)
-                        restorePoints.RemoveAt(0);
+                    if (restorePoints[0].Incriment == false && restorePoints.Count > 1 && restorePoints[1].Incriment == false)
+                    {
+                        if (DateTime.HasValue == false && Size.HasValue == false)
+                            restorePoints.RemoveAt(0);
+                        else if (DateTime.HasValue == true && restorePoints[0].DateTime < DateTime && Size.HasValue == false)
+                            restorePoints.RemoveAt(0);
+                        else if (DateTime.HasValue == false && Size.HasValue == true && restorePoints.Sum(file => file.Size) > Size)
+                            restorePoints.RemoveAt(0);
+                        else if (DateTime.HasValue == true && restorePoints[0].DateTime < DateTime && Size.HasValue == true && restorePoints.Sum(file => file.Size) > Size)
+                            restorePoints.RemoveAt(0);
+                        else
+                            break;
+                    }
                     else
+                    {
+                        ok = false;
                         break;
+                    }
                 }
             }
 
@@ -63,16 +72,27 @@ public class GibridClearAlgo : IAlgorithmClear
             {
                 foreach (var restorePoint in restorePoints)
                 {
-                    if (restorePoint.DateTime < DateTime)
+                    var index = restorePoints.IndexOf(restorePoint);
+                    if (restorePoints[index].Incriment == false && restorePoints.Count > index + 1 && restorePoints[index + 1].Incriment == false || restorePoint.ID == restorePoints.Last().ID)
                     {
-                        if (Count.HasValue == false && Size.HasValue == false)
-                            restorePoints.Remove(restorePoint);
-                        else if (Count.HasValue == true && restorePoints.Count > Count && Size.HasValue == false)
-                            restorePoints.Remove(restorePoint);
-                        else if (Count.HasValue == false && Size.HasValue == true && restorePoints.Sum(file => file.Size) > Size)
-                            restorePoints.Remove(restorePoint);
-                        else if (Count.HasValue == true && restorePoints.Count > Count && Size.HasValue == true && restorePoints.Sum(file => file.Size) > Size)
-                            restorePoints.Remove(restorePoint);
+                        if (restorePoint.DateTime < DateTime)
+                        {
+                            if (Count.HasValue == false && Size.HasValue == false)
+                                restorePoints.Remove(restorePoint);
+                            else if (Count.HasValue == true && restorePoints.Count > Count && Size.HasValue == false)
+                                restorePoints.Remove(restorePoint);
+                            else if (Count.HasValue == false && Size.HasValue == true && restorePoints.Sum(file => file.Size) > Size)
+                                restorePoints.Remove(restorePoint);
+                            else if (Count.HasValue == true && restorePoints.Count > Count && Size.HasValue == true && restorePoints.Sum(file => file.Size) > Size)
+                                restorePoints.Remove(restorePoint);
+                            else
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        ok = false;
+                        break;
                     }
                 }
             }
@@ -81,44 +101,49 @@ public class GibridClearAlgo : IAlgorithmClear
             {
                 while (restorePoints.Sum(file => file.Size) > Size)
                 {
-                    if (DateTime.HasValue == false && Count.HasValue == false)
-                        restorePoints.RemoveAt(0);
-                    else if (DateTime.HasValue == true && restorePoints[0].DateTime < DateTime && Count.HasValue == false)
-                        restorePoints.RemoveAt(0);
-                    else if (DateTime.HasValue == false && Count.HasValue == true && restorePoints.Count > Count)
-                        restorePoints.RemoveAt(0);
-                    else if (DateTime.HasValue == true && restorePoints[0].DateTime < DateTime && Count.HasValue == true && restorePoints.Count > Count)
-                        restorePoints.RemoveAt(0);
+                    if (restorePoints[0].Incriment == false && restorePoints.Count > 1 && restorePoints[1].Incriment == false)
+                    {
+                        if (DateTime.HasValue == false && Count.HasValue == false)
+                            restorePoints.RemoveAt(0);
+                        else if (DateTime.HasValue == true && restorePoints[0].DateTime < DateTime && Count.HasValue == false)
+                            restorePoints.RemoveAt(0);
+                        else if (DateTime.HasValue == false && Count.HasValue == true && restorePoints.Count > Count)
+                            restorePoints.RemoveAt(0);
+                        else if (DateTime.HasValue == true && restorePoints[0].DateTime < DateTime && Count.HasValue == true && restorePoints.Count > Count)
+                            restorePoints.RemoveAt(0);
+                        else
+                            break;
+                    }
                     else
+                    {
+                        ok = false;
                         break;
+                    }
                 }
+            }
+            if (!ok)
+            {
+                throw new WarningClearAlgorithmException("Not all restore points were deleted.");
             }
         }
         else
         {
             if (Count.HasValue)
             {
-                while (restorePoints.Count > Count)
-                {
-                    restorePoints.RemoveAt(0);
-                }
+                var countClear = new CountClearAlgo(Count.Value);
+                countClear.Clear(restorePoints);
             }
 
             if (DateTime.HasValue)
             {
-                foreach (var restorePoint in restorePoints)
-                {
-                    if (restorePoint.DateTime < DateTime)
-                        restorePoints.Remove(restorePoint);
-                }
+                var dateClear = new DateClearAlgo(DateTime.Value);
+                dateClear.Clear(restorePoints);
             }
 
             if (Size.HasValue)
             {
-                while (restorePoints.Sum(file => file.Size) > Size)
-                {
-                    restorePoints.RemoveAt(0);
-                }
+                var sizeClear = new SizeClearAlgo(Size.Value);
+                sizeClear.Clear(restorePoints);
             }
         }
     }

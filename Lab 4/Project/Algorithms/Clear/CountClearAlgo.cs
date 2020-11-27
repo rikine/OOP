@@ -16,7 +16,18 @@ public class CountClearAlgo : IAlgorithmClear
     {
         while (restorePoints.Count > Count)
         {
-            restorePoints.RemoveAt(0);
+            if (restorePoints[0].Incriment == false && restorePoints.Count > 1 && restorePoints[1].Incriment == false)
+            {
+                restorePoints.RemoveAt(0);
+            }
+            else
+            {
+                break;
+            }
+        }
+        if (restorePoints.Count > Count)
+        {
+            throw new WarningClearAlgorithmException($"Not all restore points were deleted. Max count = {Count}. Actual count = {restorePoints.Count}");
         }
     }
 }
