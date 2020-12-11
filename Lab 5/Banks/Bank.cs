@@ -214,4 +214,20 @@ abstract class Bank : IBank
     }
 
     private ImmutableList<IAccount> GetAccounts() => _accounts.ToImmutableList();
+    
+        public void UpdateAllAccounts()
+    {
+        foreach (var account in _accounts)
+        {
+            account.CheckMoney();
+        }
+    }
+
+    public void FutureInThePast(int days) //Сколько дней промотать
+    {
+        for (int i = 0; i < days; i++)
+        {
+            UpdateAllAccounts();
+        }
+    }
 }
