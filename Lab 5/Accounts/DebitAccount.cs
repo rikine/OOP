@@ -9,6 +9,7 @@ class DebitAccount : IAccount
     private double _percent;
     private DateTime _lastDoBonus;
     private double _limitWhileDoubt;
+    private DateTime time;
 
 
     public DebitAccount(Client client, double percent, double limitWhileDoubt, double money = 0)
@@ -20,11 +21,12 @@ class DebitAccount : IAccount
         _bonus = 0;
         _lastDoBonus = DateTime.Now;
         _limitWhileDoubt = limitWhileDoubt;
+        time = DateTime.Now.AddDays(1);
     }
 
     public void Add(double amount)
     {
-        DoBonus();
+        DoBonus(time = time.AddDays(1));
         if (amount <= 0)
             throw new AddMoneyException($"Can't add lower or 0 money to account. Account id = {Id}");
         _money += amount;
@@ -33,7 +35,7 @@ class DebitAccount : IAccount
 
     public void TakeOff(double amount)
     {
-        DoBonus();
+        DoBonus(time = time.AddDays(1));
         if (Client.IsDoubtful() && _limitWhileDoubt < amount)
             throw new LimitDoubtException($"Your accout is under doubt. Your limit is {_limitWhileDoubt}");
         if (amount <= 0)
@@ -46,7 +48,7 @@ class DebitAccount : IAccount
 
     public void TransferMoney(IAccount where, double amount)
     {
-        DoBonus();
+        DoBonus(time = time.AddDays(1));
         if (Client.IsDoubtful() && _limitWhileDoubt < amount)
             throw new LimitDoubtException($"Your accout is under doubt. Your limit is {_limitWhileDoubt}");
         if (where.Id == Id)
@@ -60,21 +62,24 @@ class DebitAccount : IAccount
 
     public double CheckMoney()
     {
-        DoBonus();
+        DoBonus(time = time.AddDays(1));
         return _money;
     }
 
-    private void DoBonus()
+    private void DoBonus(DateTime dateTime)
     {
-        if (_lastDoBonus.Day >= DateTime.Now.Day)
+        // if (_lastDoBonus.Day == DateTime.Now.Day)
+        if (_lastDoBonus.Day == dateTime.Day)
             return;
-        if (_lastDoBonus.Month < DateTime.Now.Month || (_lastDoBonus.Month == 12 && DateTime.Now.Month == 1))
+        // if (_lastDoBonus.Month < DateTime.Now.Month || (_lastDoBonus.Month == 12 && DateTime.Now.Month == 1))
+        if (_lastDoBonus.Month < dateTime.Month || (_lastDoBonus.Month == 12 && dateTime.Month == 1))
         {
             _money += _bonus;
             _bonus = 0;
         }
         _bonus += (_money + _bonus) * _percent / 100.0 / 365.0;
-        _lastDoBonus = DateTime.Now;
+        // _lastDoBonus = DateTime.Now;
+        _lastDoBonus = dateTime;
     }
 
 }
