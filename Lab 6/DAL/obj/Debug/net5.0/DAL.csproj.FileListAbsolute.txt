@@ -1,0 +1,12 @@
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/bin/Debug/net5.0/DAL.deps.json
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/bin/Debug/net5.0/DAL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/bin/Debug/net5.0/ref/DAL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/bin/Debug/net5.0/DAL.pdb
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/obj/Debug/net5.0/DAL.csprojAssemblyReference.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/obj/Debug/net5.0/DAL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/obj/Debug/net5.0/DAL.AssemblyInfoInputs.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/obj/Debug/net5.0/DAL.AssemblyInfo.cs
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/obj/Debug/net5.0/DAL.csproj.CoreCompileInputs.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/obj/Debug/net5.0/DAL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/obj/Debug/net5.0/ref/DAL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/obj/Debug/net5.0/DAL.pdb

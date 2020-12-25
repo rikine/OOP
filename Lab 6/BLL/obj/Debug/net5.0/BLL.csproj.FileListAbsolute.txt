@@ -1,0 +1,15 @@
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/bin/Debug/net5.0/BLL.deps.json
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/bin/Debug/net5.0/BLL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/bin/Debug/net5.0/ref/BLL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/bin/Debug/net5.0/BLL.pdb
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/bin/Debug/net5.0/DAL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/bin/Debug/net5.0/DAL.pdb
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/BLL.csprojAssemblyReference.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/BLL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/BLL.AssemblyInfoInputs.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/BLL.AssemblyInfo.cs
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/BLL.csproj.CoreCompileInputs.cache
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/BLL.csproj.CopyComplete
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/BLL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/ref/BLL.dll
+/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/obj/Debug/net5.0/BLL.pdb

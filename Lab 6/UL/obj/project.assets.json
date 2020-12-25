@@ -1,0 +1,110 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "DAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.dll": {}
+        }
+      },
+      "DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLL/BLL.csproj",
+      "msbuildProject": "../BLL/BLL.csproj"
+    },
+    "DAL/1.0.0": {
+      "type": "project",
+      "path": "../DAL/DAL.csproj",
+      "msbuildProject": "../DAL/DAL.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "BLL >= 1.0.0",
+      "DAL >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/rikine/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/UL/UL.csproj",
+      "projectName": "UL",
+      "projectPath": "/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/UL/UL.csproj",
+      "packagesPath": "/Users/rikine/.nuget/packages/",
+      "outputPath": "/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/UL/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/rikine/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/BLL.csproj": {
+              "projectPath": "/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/BLL/BLL.csproj"
+            },
+            "/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/DAL.csproj": {
+              "projectPath": "/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DAL/DAL.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
