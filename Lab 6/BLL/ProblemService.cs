@@ -1,62 +1,76 @@
+using System.Linq;
 using System.Collections.Immutable;
 using System;
 using System.Collections.Generic;
 using BLL.Staff;
 using BLL.Task;
+using DAL.Problem;
+using DAL;
+using BLL.Condtion;
 
 namespace BLL
 {
     public class ProblemService : IProblemService
     {
-        private List<Problem> _problems = new List<Problem>();
+        private ProblemRepositoryDAL _problemRepository;
+
+        public ProblemService(ProblemRepositoryDAL problemRepository)
+        {
+            _problemRepository = problemRepository;
+        }
 
         public Problem MakeProblem(string name, string description, IStaffBLL who)
         {
-            var problem = new Problem(_problems.Count + 1, name, description, who);
-            _problems.Add(problem);
-            return problem;
+            var problem = new Problem(name, description, who);
+            var problemDAL = problem.MapperToDLL();
+            _problemRepository.Add(problemDAL);
+            return new Problem(problemDAL);
         }
 
         public void AddComment(Problem problem, string comment, IStaffBLL who)
         {
-            var probleInList = _problems.Find(prob => prob.Id == problem.Id);
+            var probleInList = _problemRepository.GetEnumerable().Single(prob => prob.Id == problem.Id);
             if (probleInList == null)
                 throw new ProblemNotInListException($"Problem with id = {problem.Id} was not found in service");
             problem.AddComment(comment, who);
+            _problemRepository.Replace(problem.MapperToDLL());
         }
 
         public void ChangeConditionOfProblem(Problem problem, ConditionOfProblem condition, IStaffBLL who)
         {
-            var probleInList = _problems.Find(prob => prob.Id == problem.Id);
+            var probleInList = _problemRepository.GetEnumerable().Single(prob => prob.Id == problem.Id);
             if (probleInList == null)
                 throw new ProblemNotInListException($"Problem with id = {problem.Id} was not found in service");
             problem.ChangeCondition(condition, who);
+            _problemRepository.Replace(problem.MapperToDLL());
         }
 
         public void ChangeStaffForProblem(Problem problem, IStaffBLL staff, IStaffBLL who)
         {
-            var probleInList = _problems.Find(prob => prob.Id == problem.Id);
+            var probleInList = _problemRepository.GetEnumerable().Single(prob => prob.Id == problem.Id);
             if (probleInList == null)
                 throw new ProblemNotInListException($"Problem with id = {problem.Id} was not found in service");
             problem.ChangeStaff(staff, who);
+            _problemRepository.Replace(problem.MapperToDLL());
         }
 
         public Problem FindByTimeOfCreation(DateTime time)
         {
-            foreach (var problem in _problems)
+            foreach (var problem in _problemRepository.GetEnumerable())
             {
                 if (problem.TimeOfCreation == time)
-                    return problem;
+                    return new Problem(problem);
             }
             throw new ProblemNotFoundException($"Problem with creation time isn't found. Creation Time = {time}");
         }
 
         public Problem FindByTimeOfLastChange(DateTime time)
         {
-            foreach (var problem in _problems)
+            foreach (var problem in _problemRepository.GetEnumerable())
             {
-                if (problem.TimeOfLastChange() == time)
-                    return problem;
+                var problemBLL = new Problem(problem);
+                if (problemBLL.TimeOfLastChange() == time)
+                    return problemBLL;
             }
             throw new ProblemNotFoundException($"Problem with last change time isn't found. Last change Time = {time}");
         }
@@ -64,10 +78,11 @@ namespace BLL
         public IEnumerable<Problem> FindProblemOfChangesOfStaff(IStaffBLL staff)
         {
             List<Problem> problems = new List<Problem>();
-            foreach (var problem in _problems)
+            foreach (var problem in _problemRepository.GetEnumerable())
             {
-                if (problem.IsStaffMakeAnyChanges(staff))
-                    problems.Add(problem);
+                var problemBLL = new Problem(problem);
+                if (problemBLL.IsStaffMakeAnyChanges(staff))
+                    problems.Add(problemBLL);
             }
             return problems;
         }
@@ -107,18 +122,28 @@ namespace BLL
         public IEnumerable<Problem> FindProblemOfStaff(IStaffBLL staff)
         {
             List<Problem> problems = new List<Problem>();
-            foreach (var problem in _problems)
+            foreach (var problem in _problemRepository.GetEnumerable())
             {
-                if (problem.GetStaff() == staff)
-                    problems.Add(problem);
+                var problemBLL = new Problem(problem);
+                if (problemBLL.GetStaff() == staff)
+                    problems.Add(problemBLL);
             }
             return problems;
         }
 
-        public IEnumerable<Problem> GetAll() => _problems.ToImmutableArray();
+        public IEnumerable<Problem> GetAll()
+        {
+            var all = _problemRepository.GetEnumerable();
+            List<Problem> problems = new List<Problem>();
+            foreach (var problem in all)
+            {
+                problems.Add(new Problem(problem));
+            }
+            return problems.ToArray();
+        }
 
         public ConditionOfProblem GetConditionOfProblem(Problem problem) => problem.GetCondition();
 
-        public Problem GetProblem(int id) => _problems.Find(problem => problem.Id == id);
+        public Problem GetProblem(int id) => new Problem(_problemRepository.Get(id));
     }
 }

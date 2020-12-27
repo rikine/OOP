@@ -1,0 +1,30 @@
+[TeamLead]
+id = 0
+name = Pavel_Durov
+slaves = 1,2,3
+
+[Director]
+id = 1
+name = Jony_Ive
+slaves = 4,5
+
+[Director]
+id = 2
+name = Steve_Jobs
+slaves = 6
+
+[Staff]
+id = 3
+name = Slave_1
+
+[Staff]
+id = 4
+name = Slave_2
+
+[Staff]
+id = 5
+name = Slave_3
+
+[Staff]
+id = 6
+name = Slave_4

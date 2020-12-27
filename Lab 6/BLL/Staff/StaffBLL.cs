@@ -22,10 +22,5 @@ namespace BLL.Staff
             return false;
         }
 
-        public string Print(int offset)
-        {
-            return $"\n{new string('\t', offset)}Staff\n{new string('\t', offset)}{Id} {Name}";
-        }
-
     }
 }

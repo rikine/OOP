@@ -1,0 +1,41 @@
+[Problem]
+id = 0
+name = 
+description = 
+staffid = 
+condition = 
+comment = 
+timeOfCreation = 
+historyOfChangesOfStaff:
+//TIME
+//NewStaffId
+//WhoId
+historyOfChangesOfCondition:
+//TIME
+//NewCondition
+//WhoId
+historyOfChangesOfComment:
+//TIME
+//NewComment
+//WhoId
+
+[Problem]
+id = 1
+name = OOP_LAB_6
+description = MULTYLAYER_ARCHITECTURE_EMPLOYEES
+staffid = 3
+condition = 
+comment = 
+timeOfCreation = 
+historyOfChangesOfStaff:
+//TIME
+//NewStaffId
+//WhoId
+historyOfChangesOfCondition:
+//TIME
+//NewCondition
+//WhoId
+historyOfChangesOfComment:
+//TIME
+//NewComment
+//WhoId

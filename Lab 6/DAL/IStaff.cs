@@ -7,6 +7,5 @@ namespace DAL.Staff
     {
         int? Id { get; }
         string? Name { get; }
-        string Print(int offset);
     }
 }

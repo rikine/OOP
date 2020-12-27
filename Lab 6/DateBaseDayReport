@@ -1,0 +1,15 @@
+[DayReport]
+id = 0
+staffid = 4
+timeOfCreation = 27.12.2020 06:32:27
+readyProblems = DAL.Problem.ProblemDAL
+comments:
+27.12.2020 06:32:27
+greuahgeirugh
+
+[DayReport]
+id = 1
+staffid = 3
+timeOfCreation = 27.12.2020 06:32:31
+readyProblems = DAL.Problem.ProblemDAL
+comments:

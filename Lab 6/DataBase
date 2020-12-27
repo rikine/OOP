@@ -6,12 +6,12 @@ slaves = 1,2,3
 [Director]
 id = 1
 name = Jony_Ive
-slaves = 4,5,9,10,12,7
+slaves = 4,5,9,7
 
 [Director]
 id = 2
 name = Steve_Jobs
-slaves = 6,11
+slaves = 6
 
 [Staff]
 id = 3
@@ -37,26 +37,10 @@ name = ahhahaha
 
 [Staff]
 id = 8
-name = AHHAHAHA
+name = Fucking_Slave
 
 
 [Director]
 id = 9
-name = Fucking_director
-slaves = 
-
-
-[Staff]
-id = 10
-name = ahhahaha
-
-
-[Staff]
-id = 11
-name = AHHAHAHA
-
-
-[Director]
-id = 12
 name = Fucking_director
 slaves = 8

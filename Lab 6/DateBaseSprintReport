@@ -1,0 +1,17 @@
+[SprintReport]
+id = 0
+staffid = 4
+timeOfCreation = 27.12.2020 06:32:27
+condition = Close
+dayReports = DAL.Reports.DayReport
+comments:
+27.12.2020 06:32:27
+fjghruieajewrg
+
+[SprintReport]
+id = 1
+staffid = 3
+timeOfCreation = 27.12.2020 06:32:31
+condition = Close
+dayReports = DAL.Reports.DayReport
+comments:

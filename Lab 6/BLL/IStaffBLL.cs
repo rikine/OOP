@@ -7,7 +7,6 @@ namespace BLL.Staff
     {
         int? Id { get; }
         string? Name { get; }
-        string Print(int offset);
 
         bool EqualsDAL(IStaff staff);
     }

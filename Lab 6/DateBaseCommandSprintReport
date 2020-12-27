@@ -1,0 +1,30 @@
+[CommandSprintReport]
+id = 0
+condition = Close
+timeOfCreation = 27.12.2020 06:32:27
+sprintReports = DAL.Reports.SprintReport,DAL.Reports.SprintReport
+REPORT:
+COMMAND_REPORT_DO_YOUR_BEST
+DayReport 0
+Slave_2
+27.12.2020 06:32:27
+greuahgeirugh
+
+PROBLEM ID = 0
+Problem name =   OOP_LAB_5
+Problem description =  BANKS
+Problem timeOfCreation = 25.12.2020 15:33:52
+Condition changed by Slave_2 at 27.12.2020 06:32:27: new value = Resolved.
+
+Comment was added at 27.12.2020 06:32:27: fjghruieajewrg
+
+COMMAND_REPORT_DO_YOUR_BEST
+DayReport 1
+Slave_1
+27.12.2020 06:32:31
+
+PROBLEM ID = 1
+Problem name =  OOP_LAB_6
+Problem description =  MULTYLAYER_ARCHITECTURE_EMPLOYEES
+Problem timeOfCreation = 26.12.2020 00:33:52
+Condition changed by Slave_1 at 27.12.2020 06:32:31: new value = Resolved.

@@ -2,7 +2,9 @@
 using DAL;
 using BLL;
 using UL.Staff;
-using BLL.Task;
+using UL.Report;
+using BLL.Condtion;
+using System.Collections.Generic;
 
 namespace UL
 {
@@ -13,7 +15,53 @@ namespace UL
             Employees employees = new Employees("/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DataBase");
             EmployeesService employeesService = new EmployeesService(employees);
             EmployeeController employeeController = new EmployeeController(employeesService);
-            var slave1 = new StaffUL("ahhahaha", employeeController.Get(1));
+
+            ProblemRepositoryDAL problemRepositoryDAL = new ProblemRepositoryDAL("/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DataBaseProblems", employees);
+            ProblemService problemService = new ProblemService(problemRepositoryDAL);
+            ProblemController problemController = new ProblemController(problemService);
+
+            DayReportRepository dayReportRepository = new DayReportRepository("/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DateBaseDayReport", employees, problemRepositoryDAL);
+            DayReportService dayReportService = new DayReportService(dayReportRepository);
+            ReportDayController reportDayController = new ReportDayController(dayReportService);
+
+            SprintReportRepository sprintReportRepository = new SprintReportRepository("/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DateBaseSprintReport", employees, dayReportRepository);
+            SprintReportService sprintReportService = new SprintReportService(sprintReportRepository);
+            ReportSprintController reportSprintController = new ReportSprintController("COMMAND_REPORT_DO_YOUR_BEST", sprintReportService);
+
+            CommandSprintReportRepository commandSprintReportRepository = new CommandSprintReportRepository("/Users/rikine/Documents/VS_code/C#_Projects/OOP lab6/DateBaseCommandSprintReport", sprintReportRepository);
+            CommandSprintReportSevice commandSprintReportSevice = new CommandSprintReportSevice(commandSprintReportRepository);
+            ReportCommandController reportCommandController = new ReportCommandController(commandSprintReportSevice, reportSprintController);
+
+            var dayReport1 = new DayReport(employeeController.Get(4));
+            reportDayController.Add(dayReport1);
+            reportDayController.AddComment(dayReport1, "greuahgeirugh");
+            var problem1 = problemController.GetProblem(0);
+            problemController.ChangeConditionOfProblem(problem1, ConditionOfProblem.Resolved, employeeController.Get(4));
+            reportDayController.AddReadyProblem(dayReport1, problem1);
+            var listOfReports = new List<DayReport>();
+            listOfReports.Add(dayReport1);
+            var sprintReport1 = new SprintReport(employeeController.Get(4), listOfReports);
+            reportSprintController.Add(sprintReport1);
+            reportSprintController.AddComment(sprintReport1, "fjghruieajewrg");
+            reportSprintController.CloseAndSaveSprint(sprintReport1);
+            var commandReport = new CommandSprintReport();
+            reportCommandController.Add(commandReport);
+            reportCommandController.AddSprintReport(commandReport, sprintReport1);
+
+            var dayReport2 = new DayReport(employeeController.Get(3));
+            reportDayController.Add(dayReport2);
+            var problem2 = problemController.GetProblem(1);
+            problemController.AddComment(problem2, "fguhreiawejgorae", employeeController.Get(3));
+            problemController.ChangeConditionOfProblem(problem2, ConditionOfProblem.Resolved, employeeController.Get(3));
+            reportDayController.AddReadyProblem(dayReport2, problem2);
+            var listOfReports1 = new List<DayReport>();
+            listOfReports1.Add(dayReport2);
+            var sprintReport2 = new SprintReport(employeeController.Get(3), listOfReports1);
+            reportSprintController.Add(sprintReport2);
+            reportSprintController.CloseAndSaveSprint(sprintReport2);
+            reportCommandController.AddSprintReport(commandReport, sprintReport2);
+            reportCommandController.CloseCommandSprintReport(commandReport);
+            /*var slave1 = new StaffUL("ahhahaha", employeeController.Get(1));
             employeeController.Add(slave1);
             var slave2 = new StaffUL("Fucking_Slave", employeeController.Get(2));
             employeeController.Add(slave2);
@@ -44,7 +92,7 @@ namespace UL
             reportController.AddCommentSprint(slave1, "ZABIL DODELAT'");
             reportController.SaveAndCloseSprintReport(slave1);
             reportController.SaveAndCloseSprintReport(staff2);
-            reportController.CreateCommandSprintReport();
+            reportController.CreateCommandSprintReport();*/
         }
     }
 }

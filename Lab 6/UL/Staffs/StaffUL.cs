@@ -1,9 +1,9 @@
 namespace UL.Staff
 {
-    public class StaffUL : AStaff
+    public class StaffUL : IStaff
     {
-        public override int? Id { get; set; }
-        public override string Name { get; set; }
+        public int? Id { get; set; }
+        public string Name { get; set; }
         public IStaff Manager { get; set; }
 
         public StaffUL() { }
@@ -14,12 +14,12 @@ namespace UL.Staff
             Manager = manager;
         }
 
-        public override string Print(int offset = 0)
+        public string Print(int offset = 0)
         {
             return $"\n{new string('\t', offset)}Staff\n{new string('\t', offset)} {Name}";
         }
 
-        public override bool EqualsBLL(BLL.Staff.IStaffBLL staff)
+        public bool EqualsBLL(BLL.Staff.IStaffBLL staff)
         {
             if (!Id.HasValue && !staff.Id.HasValue && Name == staff.Name)
             {
